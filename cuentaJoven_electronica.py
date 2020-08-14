@@ -50,7 +50,7 @@ class CuentaJoven(Cuenta):
 
     def esTitularValido(self):
         edad = int(input('Ingrese edad: '))
-        if edad > 18 and edad < 25:
+        if edad > 17 and edad < 26:
             es_titular = True
         else:
             es_titular = False
