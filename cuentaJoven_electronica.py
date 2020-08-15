@@ -1,7 +1,7 @@
 class Cuenta():
     def __init__(self, titular, cantidad=0):
         self.titular = titular
-        self.cantidad = cantidad
+        self.__cantidad = cantidad
 
     def menu(self):
         print('---MENU---')
@@ -28,25 +28,27 @@ class Cuenta():
             break
 
     def mostrar(self):
-        print(f'Titular de la cuenta:{self.titular}\nCantidad en cuenta:{self.cantidad}')
+        print(f'Titular de la cuenta:{self.titular}\nCantidad en cuenta:{self.__cantidad}')
     
     def ingresar(self):
         monto = float(input('Ingrese el monto: '))
         if monto > 0:
-            self.cantidad += monto
+            self.__cantidad += monto
         else:
             print('No válido')
     
     def retirar(self):
         monto = float(input('Ingrese el monto: '))
         if monto > 0:
-             self.cantidad -= monto
+             self.__cantidad -= monto
        
 
 class CuentaJoven(Cuenta):
     def __init__(self, titular, cantidad=0, bonificacion=0):    
         Cuenta.__init__(self, titular, cantidad=0)
+        self.__cantidad = cantidad
         self.bonificacion = bonificacion
+
 
     def esTitularValido(self):
         edad = int(input('Ingrese edad: '))
@@ -58,7 +60,7 @@ class CuentaJoven(Cuenta):
     
     def mostrar(self):
         print('CUENTA JOVEN')
-        print(f'Titular de la cuenta:{self.titular}\nCantidad en cuenta:{self.cantidad}\nBonificación:{self.bonificacion}%')
+        print(f'Titular de la cuenta:{self.titular}\nCantidad en cuenta:{self.__cantidad}\nBonificación:{self.bonificacion}%')
 
 #cuenta = Cuenta('Alfredo')
 cuenta_j = CuentaJoven('Ricardo', 1000, 50)
