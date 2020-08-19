@@ -42,13 +42,24 @@ class Cuenta():
         if monto > 0:
              self.__cantidad -= monto
        
-
+#CREO LA CUENTA JOVEN. LA CLASE
 class CuentaJoven(Cuenta):
     def __init__(self, titular, cantidad=0, bonificacion=0):    
         Cuenta.__init__(self, titular, cantidad=0)
         self.__cantidad = cantidad
         self.bonificacion = bonificacion
 
+    def ingresar(self):
+        monto = float(input('Ingrese el monto de la Cuenta Joven: '))
+        if monto > 0:
+            self.__cantidad += monto
+        else:
+            print('No válido')
+
+    def retirar(self):
+        monto = float(input('Ingrese el monto a retirar: '))
+        if monto > 0:
+             self.__cantidad -= monto
 
     def esTitularValido(self):
         edad = int(input('Ingrese edad: '))
@@ -64,7 +75,7 @@ class CuentaJoven(Cuenta):
 
 #cuenta = Cuenta('Alfredo')
 cuenta_j = CuentaJoven('Ricardo', 1000, 50)
-#cuenta.mostrar()
+#cuenta.menu()
 
 if cuenta_j.esTitularValido():
     cuenta_j.menu()
